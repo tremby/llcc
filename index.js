@@ -1,3 +1,8 @@
+function gridSizeArray() {
+	return [(GRID[0] || []).length, GRID.length];
+}
+
 function gridSize() {
-	return `${(GRID[0] || []).length} x ${GRID.length}`;
+	const dimensions = gridSizeArray();
+	return `${dimensions[0]} x ${dimensions[1]}`;
 }

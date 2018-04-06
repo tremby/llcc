@@ -26,3 +26,7 @@ function cellContents(x, y) {
 function lightCell(ref) {
 	return cellContents.apply(this, refToIndices(ref));
 }
+
+function isRock(ref) {
+	return lightCell(ref) === '^';
+}

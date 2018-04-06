@@ -30,3 +30,7 @@ function lightCell(ref) {
 function isRock(ref) {
 	return lightCell(ref) === '^';
 }
+
+function isCurrent(ref) {
+	return lightCell(ref) === '~';
+}

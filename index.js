@@ -12,10 +12,18 @@ function totalCells() {
 	return dimensions[0] * dimensions[1];
 }
 
+function columnRefStringToIndex(letter) {
+	return letter.charCodeAt(0) - 'A'.charCodeAt(0);
+}
+
+function rowRefStringToIndex(numberString) {
+	return parseInt(numberString, 10) - 1;
+}
+
 function refToIndices(ref) {
 	return [
-		ref.charCodeAt(0) - 'A'.charCodeAt(0),
-		parseInt(ref.substr(1), 10) - 1,
+		columnRefStringToIndex(ref.substr(0, 1)),
+		rowRefStringToIndex(ref.substr(1)),
 	];
 }
 

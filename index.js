@@ -46,3 +46,8 @@ function isCurrent(ref) {
 function lightRow(indexPlusOne) {
 	return GRID[indexPlusOne - 1];
 }
+
+function lightColumn(columnRefString) {
+	const columnIndex = columnRefStringToIndex(columnRefString);
+	return GRID.map(row => row[columnIndex]);
+}

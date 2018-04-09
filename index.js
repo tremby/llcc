@@ -34,3 +34,7 @@ function isRock(ref) {
 function isCurrent(ref) {
 	return lightCell(ref) === '~';
 }
+
+function lightRow(indexPlusOne) {
+	return GRID[indexPlusOne - 1];
+}

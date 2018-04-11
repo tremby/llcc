@@ -55,3 +55,7 @@ function lightColumn(columnRefString) {
 	const columnIndex = columnRefStringToIndex(columnRefString);
 	return GRID.map(row => row[columnIndex]);
 }
+
+function isSafe(ref) {
+	return !isRock(ref) && !isCurrent(ref);
+}

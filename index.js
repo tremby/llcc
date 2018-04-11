@@ -28,6 +28,10 @@ function refToIndices(ref) {
 }
 
 function cellContents(x, y) {
+	const size = gridSizeArray();
+	if (size[0] <= x || size[1] <= y) {
+		return false;
+	}
 	return GRID[y][x];
 }
 

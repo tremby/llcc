@@ -96,3 +96,9 @@ function allRocks() {
 		.filter(cellInfo => testRock(cellInfo.cell))
 		.map(cellInfo => indicesToRef(cellInfo.indices));
 }
+
+function allCurrents() {
+	return Array.from(gridToArray())
+		.filter(cellInfo => testCurrent(cellInfo.cell))
+		.map(cellInfo => indicesToRef(cellInfo.indices));
+}

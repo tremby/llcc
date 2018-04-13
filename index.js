@@ -79,3 +79,20 @@ function lightColumn(columnRefString) {
 function isSafe(ref) {
 	return !isRock(ref) && !isCurrent(ref);
 }
+
+function* gridToArray() {
+	for (const [rowIndex, row] of GRID.entries()) {
+		for (const [columnIndex, cell] of row.entries()) {
+			yield {
+				indices: [columnIndex, rowIndex],
+				cell: cell,
+			};
+		}
+	}
+}
+
+function allRocks() {
+	return Array.from(gridToArray())
+		.filter(cellInfo => testRock(cellInfo.cell))
+		.map(cellInfo => indicesToRef(cellInfo.indices));
+}

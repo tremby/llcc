@@ -16,8 +16,16 @@ function columnRefStringToIndex(letter) {
 	return letter.charCodeAt(0) - 'A'.charCodeAt(0);
 }
 
+function columnIndexToRefString(index) {
+	return String.fromCharCode('A'.charCodeAt(0) + index);
+}
+
 function rowRefStringToIndex(numberString) {
 	return parseInt(numberString, 10) - 1;
+}
+
+function rowIndexToRefString(index) {
+	return (index + 1).toString();
 }
 
 function refToIndices(ref) {
@@ -25,6 +33,10 @@ function refToIndices(ref) {
 		columnRefStringToIndex(ref.substr(0, 1)),
 		rowRefStringToIndex(ref.substr(1)),
 	];
+}
+
+function indicesToRef(indices) {
+	return columnIndexToRefString(indices[0]) + rowIndexToRefString(indices[1]);
 }
 
 function cellContents(x, y) {
@@ -39,12 +51,20 @@ function lightCell(ref) {
 	return cellContents.apply(this, refToIndices(ref));
 }
 
+function testRock(cell) {
+	return cell === '^';
+}
+
 function isRock(ref) {
-	return lightCell(ref) === '^';
+	return testRock(lightCell(ref));
+}
+
+function testCurrent(cell) {
+	return cell === '~';
 }
 
 function isCurrent(ref) {
-	return lightCell(ref) === '~';
+	return testCurrent(lightCell(ref));
 }
 
 function lightRow(indexPlusOne) {

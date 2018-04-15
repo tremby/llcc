@@ -117,3 +117,7 @@ function firstMatch(test) {
 function firstRock() {
 	return firstMatch(testRock);
 }
+
+function firstCurrent() {
+	return firstMatch(testCurrent);
+}

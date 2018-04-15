@@ -91,16 +91,18 @@ function* gridToArray() {
 	}
 }
 
-function allRocks() {
+function allMatches(test) {
 	return Array.from(gridToArray())
-		.filter(cellInfo => testRock(cellInfo.cell))
+		.filter(cellInfo => test(cellInfo.cell))
 		.map(cellInfo => indicesToRef(cellInfo.indices));
 }
 
+function allRocks() {
+	return allMatches(testRock);
+}
+
 function allCurrents() {
-	return Array.from(gridToArray())
-		.filter(cellInfo => testCurrent(cellInfo.cell))
-		.map(cellInfo => indicesToRef(cellInfo.indices));
+	return allMatches(testCurrent);
 }
 
 function firstRock() {

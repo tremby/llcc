@@ -105,11 +105,15 @@ function allCurrents() {
 	return allMatches(testCurrent);
 }
 
-function firstRock() {
+function firstMatch(test) {
 	for (const cellInfo of gridToArray()) {
-		if (testRock(cellInfo.cell)) {
+		if (test(cellInfo.cell)) {
 			return indicesToRef(cellInfo.indices);
 		}
 	}
 	return null;
+}
+
+function firstRock() {
+	return firstMatch(testRock);
 }

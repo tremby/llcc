@@ -102,3 +102,12 @@ function allCurrents() {
 		.filter(cellInfo => testCurrent(cellInfo.cell))
 		.map(cellInfo => indicesToRef(cellInfo.indices));
 }
+
+function firstRock() {
+	for (const cellInfo of gridToArray()) {
+		if (testRock(cellInfo.cell)) {
+			return indicesToRef(cellInfo.indices);
+		}
+	}
+	return null;
+}

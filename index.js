@@ -76,8 +76,12 @@ function lightColumn(columnRefString) {
 	return GRID.map(row => row[columnIndex]);
 }
 
+function testSafe(cell) {
+	return !testRock(cell) && !testCurrent(cell);
+}
+
 function isSafe(ref) {
-	return !isRock(ref) && !isCurrent(ref);
+	return testSafe(lightCell(ref));
 }
 
 function* gridToArray() {

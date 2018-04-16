@@ -125,3 +125,30 @@ function firstRock() {
 function firstCurrent() {
 	return firstMatch(testCurrent);
 }
+
+function transformIndices(indices, deltaX, deltaY) {
+	const newX = indices[0] + deltaX;
+	const newY = indices[1] + deltaY;
+	const dimensions = gridSizeArray();
+	if (newX < 0 || newY < 0 || newX >= dimensions[0] || newY >= dimensions[1]) {
+		return null;
+	}
+	return [newX, newY];
+}
+
+function isDangerous(ref) {
+	const centre = refToIndices(ref);
+	for (const indices of [
+		centre,
+		transformIndices(centre, 0, -1), // N
+		transformIndices(centre, 1, 0), // E
+		transformIndices(centre, 0, 1), // S
+		transformIndices(centre, -1, 0), // W
+	].filter(a => a !== null)) {
+		if (!testSafe(cellContents(indices))) {
+			return true;
+		}
+	}
+
+	return false;
+}

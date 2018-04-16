@@ -39,16 +39,16 @@ function indicesToRef(indices) {
 	return columnIndexToRefString(indices[0]) + rowIndexToRefString(indices[1]);
 }
 
-function cellContents(x, y) {
+function cellContents(indices) {
 	const size = gridSizeArray();
-	if (size[0] <= x || size[1] <= y) {
+	if (size[0] <= indices[0] || size[1] <= indices[1]) {
 		return false;
 	}
-	return GRID[y][x];
+	return GRID[indices[1]][indices[0]];
 }
 
 function lightCell(ref) {
-	return cellContents.apply(this, refToIndices(ref));
+	return cellContents(refToIndices(ref));
 }
 
 function testRock(cell) {

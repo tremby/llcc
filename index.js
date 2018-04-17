@@ -136,19 +136,34 @@ function transformIndices(indices, deltaX, deltaY) {
 	return [newX, newY];
 }
 
+function* nearbyCells(centreIndices) {
+	let indices = null;
+
+	// Start with centre
+	yield centreIndices;
+
+	// N
+	indices = transformIndices(centreIndices, 0, -1);
+	if (indices !== null) yield indices;
+
+	// W
+	indices = transformIndices(centreIndices, -1, 0);
+	if (indices !== null) yield indices;
+
+	// E
+	indices = transformIndices(centreIndices, 1, 0);
+	if (indices !== null) yield indices;
+
+	// S
+	indices = transformIndices(centreIndices, 0, 1);
+	if (indices !== null) yield indices;
+}
+
 function isDangerous(ref) {
-	const centre = refToIndices(ref);
-	for (const indices of [
-		centre,
-		transformIndices(centre, 0, -1), // N
-		transformIndices(centre, 1, 0), // E
-		transformIndices(centre, 0, 1), // S
-		transformIndices(centre, -1, 0), // W
-	].filter(a => a !== null)) {
-		if (!testSafe(cellContents(indices))) {
+	for (const nearbyIndices of nearbyCells(refToIndices(ref))) {
+		if (!testSafe(cellContents(nearbyIndices))) {
 			return true;
 		}
 	}
-
 	return false;
 }

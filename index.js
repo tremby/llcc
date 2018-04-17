@@ -136,15 +136,30 @@ function transformIndices(indices, deltaX, deltaY) {
 	return [newX, newY];
 }
 
-function* nearbyCells(centreIndices) {
+function* nearbyCells(centreIndices, diagonal = false) {
 	let indices = null;
 
 	// Start with centre
 	yield centreIndices;
 
+	// Then go left to right, top to bottom; challenge #15 doesn't accept
+	// clockwise from NW
+
+	// NW
+	if (diagonal) {
+		indices = transformIndices(centreIndices, -1, -1);
+		if (indices !== null) yield indices;
+	}
+
 	// N
 	indices = transformIndices(centreIndices, 0, -1);
 	if (indices !== null) yield indices;
+
+	// NE
+	if (diagonal) {
+		indices = transformIndices(centreIndices, 1, -1);
+		if (indices !== null) yield indices;
+	}
 
 	// W
 	indices = transformIndices(centreIndices, -1, 0);
@@ -154,9 +169,21 @@ function* nearbyCells(centreIndices) {
 	indices = transformIndices(centreIndices, 1, 0);
 	if (indices !== null) yield indices;
 
+	// SW
+	if (diagonal) {
+		indices = transformIndices(centreIndices, -1, 1);
+		if (indices !== null) yield indices;
+	}
+
 	// S
 	indices = transformIndices(centreIndices, 0, 1);
 	if (indices !== null) yield indices;
+
+	// SE
+	if (diagonal) {
+		indices = transformIndices(centreIndices, 1, 1);
+		if (indices !== null) yield indices;
+	}
 }
 
 function isDangerous(ref) {
@@ -166,4 +193,22 @@ function isDangerous(ref) {
 		}
 	}
 	return false;
+}
+
+function distressBeacon(ref) {
+	// Find the cell with least danger
+	return indicesToRef(
+		Array.from(nearbyCells(refToIndices(ref), true))
+		.reduce((bestStats, indices) => {
+			const stats = {
+				indices: indices,
+				danger: Array.from(nearbyCells(indices, true)).filter(x => !testSafe(cellContents(x))).length,
+			};
+			if (stats.danger < bestStats.danger) {
+				return stats;
+			}
+			return bestStats;
+		}, {danger: Infinity})
+		.indices
+	);
 }

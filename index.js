@@ -215,3 +215,10 @@ function distressBeacon(ref) {
 		.indices
 	);
 }
+
+function replaceCell(indices, entity) {
+	GRID[indices[1]][indices[0]] = entity;
+}
+
+// Add a rock in a specific place (challenge day 16)
+replaceCell(refToIndices('J9'), ROCK);

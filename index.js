@@ -1,3 +1,6 @@
+const CURRENT = '~';
+const ROCK = '^';
+
 function gridSizeArray() {
 	return [(GRID[0] || []).length, GRID.length];
 }
@@ -52,7 +55,7 @@ function lightCell(ref) {
 }
 
 function testRock(cell) {
-	return cell === '^';
+	return cell === ROCK;
 }
 
 function isRock(ref) {
@@ -60,7 +63,7 @@ function isRock(ref) {
 }
 
 function testCurrent(cell) {
-	return cell === '~';
+	return cell === CURRENT;
 }
 
 function isCurrent(ref) {

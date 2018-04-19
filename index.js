@@ -220,5 +220,25 @@ function replaceCell(indices, entity) {
 	GRID[indices[1]][indices[0]] = entity;
 }
 
+function percentageReport() {
+	const total = totalCells();
+	let totalRocks = 0;
+	let totalCurrents = 0;
+	for (const cellInfo of gridToArray()) {
+		if (testRock(cellInfo.cell)) {
+			totalRocks++;
+		}
+		if (testCurrent(cellInfo.cell)) {
+			totalCurrents++;
+		}
+	}
+
+	function format(num) {
+		return Math.round(100 * 100 * num / total) / 100;
+	}
+
+	return [format(totalRocks), format(totalCurrents)];
+}
+
 // Add a rock in a specific place (challenge day 16)
 replaceCell(refToIndices('J9'), ROCK);

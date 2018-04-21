@@ -220,7 +220,7 @@ function replaceCell(indices, entity) {
 	GRID[indices[1]][indices[0]] = entity;
 }
 
-function percentageReport() {
+function percentageReport() { // Which is no longer anything to do with percentages since challenge day 18 :|
 	const total = totalCells();
 	let totalRocks = 0;
 	let totalCurrents = 0;
@@ -233,11 +233,7 @@ function percentageReport() {
 		}
 	}
 
-	function format(num) {
-		return Math.round(100 * 100 * num / total) / 100;
-	}
-
-	return [format(totalRocks), format(totalCurrents)];
+	return [total - totalRocks - totalCurrents, totalRocks, totalCurrents];
 }
 
 // Add a rock in a specific place (challenge day 16)

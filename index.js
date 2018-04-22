@@ -236,5 +236,16 @@ function percentageReport() { // Which is no longer anything to do with percenta
 	return [total - totalRocks - totalCurrents, totalRocks, totalCurrents];
 }
 
+function safetyReport() {
+	const total = totalCells();
+	const calmTotal = Array.from(gridToArray()).reduce((runningTotal, cellInfo) => {
+		if (testSafe(cellInfo.cell)) {
+			return runningTotal + 1;
+		}
+		return runningTotal;
+	}, 0);
+	return `${Math.round(10 * 100 * calmTotal / total) / 10}%`;
+}
+
 // Add a rock in a specific place (challenge day 16)
 replaceCell(refToIndices('J9'), ROCK);

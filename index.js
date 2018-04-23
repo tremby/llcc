@@ -247,5 +247,12 @@ function safetyReport() {
 	return `${Math.round(10 * 100 * calmTotal / total) / 10}%`;
 }
 
+function calcDistance(ref1, ref2) {
+	const indices1 = refToIndices(ref1);
+	const indices2 = refToIndices(ref2);
+	return Math.round(100 * Math.sqrt(Math.pow(indices1[0] - indices2[0], 2)
+			+ Math.pow(indices1[1] - indices2[1], 2))) / 100;
+}
+
 // Add a rock in a specific place (challenge day 16)
 replaceCell(refToIndices('J9'), ROCK);

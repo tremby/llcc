@@ -254,5 +254,16 @@ function calcDistance(ref1, ref2) {
 			+ Math.pow(indices1[1] - indices2[1], 2))) / 100;
 }
 
+function evaluateRoute(refArray) {
+	let currentCount = 0;
+	for (ref of refArray) {
+		const cellContents = lightCell(ref);
+		if (testRock(cellContents) || testCurrent(cellContents) && ++currentCount > 2) {
+			return false;
+		}
+	}
+	return true;
+}
+
 // Add a rock in a specific place (challenge day 16)
 replaceCell(refToIndices('J9'), ROCK);

@@ -19,6 +19,13 @@ function loadModule(index) {
 	ship.modules.push(availableModules[index]);
 }
 
+function resetLARRY() {
+	for (let i = 0; i < 10; i++) {
+		LARRY.quack();
+	}
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
+resetLARRY();

@@ -29,3 +29,4 @@ loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
 resetLARRY();
+loadModule(findModuleIndex('communication'));

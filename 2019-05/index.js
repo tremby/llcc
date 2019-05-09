@@ -25,8 +25,13 @@ function resetLARRY() {
 	}
 }
 
+function setMessage() {
+	radio.message = JSON.stringify(navigation);
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
 resetLARRY();
 loadModule(findModuleIndex('communication'));
+setMessage();

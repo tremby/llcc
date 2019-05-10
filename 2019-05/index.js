@@ -29,6 +29,10 @@ function setMessage() {
 	radio.message = JSON.stringify(navigation);
 }
 
+function activateBeacon() {
+	radio.beacon = true;
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));

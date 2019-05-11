@@ -33,6 +33,10 @@ function activateBeacon() {
 	radio.beacon = true;
 }
 
+function setFrequency() {
+	radio.frequency = (radio.range.low + radio.range.high) / 2;
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));

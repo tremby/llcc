@@ -37,6 +37,10 @@ function setFrequency() {
 	radio.frequency = (radio.range.low + radio.range.high) / 2;
 }
 
+function initialize() {
+	navigation.x = navigation.y = navigation.z = 0;
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));

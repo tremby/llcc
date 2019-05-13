@@ -41,9 +41,20 @@ function initialize() {
 	navigation.x = navigation.y = navigation.z = 0;
 }
 
+function calibrateX() {
+	for (let i = 0; i < 12; i++) {
+		const signal = checkSignal();
+		if (signal !== undefined) {
+			navigation.x = signal;
+			break;
+		}
+	}
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
 resetLARRY();
 loadModule(findModuleIndex('communication'));
 setMessage();
+calibrateX();

@@ -55,6 +55,14 @@ function calibrateX() {
 	navigation.x = calibrationLoop(12);
 }
 
+function calibrateY() {
+	navigation.y = calibrationLoop(60);
+}
+
+function calibrateZ() {
+	navigation.z = calibrationLoop(60);
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
@@ -62,3 +70,5 @@ resetLARRY();
 loadModule(findModuleIndex('communication'));
 setMessage();
 calibrateX();
+calibrateY();
+calibrateZ();

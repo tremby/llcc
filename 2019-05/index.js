@@ -41,14 +41,18 @@ function initialize() {
 	navigation.x = navigation.y = navigation.z = 0;
 }
 
-function calibrateX() {
-	for (let i = 0; i < 12; i++) {
+function calibrationLoop(iterations) {
+	for (let i = 0; i < iterations; i++) {
 		const signal = checkSignal();
 		if (signal !== undefined) {
-			navigation.x = signal;
-			break;
+			return signal;
 		}
 	}
+	return undefined;
+}
+
+function calibrateX() {
+	navigation.x = calibrationLoop(12);
 }
 
 loadModule(findModuleIndex('life-support'));

@@ -69,6 +69,13 @@ function calibrate() {
 	calibrateZ();
 }
 
+function setSpeed(speed) {
+	const parsedSpeed = parseInt(speed, 10);
+	if (parsedSpeed >= 0) {
+		navigation.speed = parsedSpeed;
+	}
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));

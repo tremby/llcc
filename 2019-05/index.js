@@ -76,9 +76,14 @@ function setSpeed(speed) {
 	}
 }
 
+function activateAntenna() {
+	ship.antenna.active = true;
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
 resetLARRY();
 loadModule(findModuleIndex('communication'));
 setMessage();
+activateAntenna();

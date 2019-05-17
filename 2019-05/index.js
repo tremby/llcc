@@ -52,15 +52,24 @@ function calibrationLoop(iterations) {
 }
 
 function calibrateX() {
-	navigation.x = calibrationLoop(12);
+	const signal = calibrationLoop(12);
+	if (signal !== undefined) {
+		navigation.x = signal;
+	}
 }
 
 function calibrateY() {
-	navigation.y = calibrationLoop(60);
+	const signal = calibrationLoop(60);
+	if (signal !== undefined) {
+		navigation.y = signal;
+	}
 }
 
 function calibrateZ() {
-	navigation.z = calibrationLoop(60);
+	const signal = calibrationLoop(60);
+	if (signal !== undefined) {
+		navigation.z = signal;
+	}
 }
 
 function calibrate() {

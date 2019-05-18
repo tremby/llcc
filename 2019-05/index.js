@@ -89,6 +89,12 @@ function activateAntenna() {
 	ship.antenna.active = true;
 }
 
+function sendBroadcast() {
+	for (let i = 0; i < 100; i++) {
+		broadcast();
+	}
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
@@ -96,3 +102,4 @@ resetLARRY();
 loadModule(findModuleIndex('communication'));
 setMessage();
 activateAntenna();
+sendBroadcast();

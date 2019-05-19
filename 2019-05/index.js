@@ -95,11 +95,16 @@ function sendBroadcast() {
 	}
 }
 
+function configureBroadcast() {
+	setFrequency();
+	activateAntenna();
+	sendBroadcast();
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
 resetLARRY();
 loadModule(findModuleIndex('communication'));
 setMessage();
-activateAntenna();
-sendBroadcast();
+configureBroadcast();

@@ -101,6 +101,24 @@ function configureBroadcast() {
 	sendBroadcast();
 }
 
+const decodeMap = {
+	'1': 'i',
+	'4': 'a',
+	'3': 'e',
+	'5': 'y',
+	'0': 'o',
+	'2': 'u',
+};
+
+function decodeLetter(letter) {
+	const decoded = decodeMap[letter];
+	return decoded != null ? decoded : letter;
+}
+
+function decodeMessage(message) {
+	return message.split('').map(decodeLetter).join('');
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));

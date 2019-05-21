@@ -102,12 +102,12 @@ function configureBroadcast() {
 }
 
 const decodeMap = {
-	'1': 'i',
-	'4': 'a',
-	'3': 'e',
-	'5': 'y',
 	'0': 'o',
+	'1': 'i',
 	'2': 'u',
+	'3': 'e',
+	'4': 'a',
+	'5': 'y',
 };
 
 function decodeLetter(letter) {

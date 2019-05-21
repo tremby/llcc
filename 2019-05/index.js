@@ -119,6 +119,12 @@ function decodeMessage(message) {
 	return message.split('').map(decodeLetter).join('');
 }
 
+function returnToEarth() {
+	for (const axis of ['x', 'y', 'z']) {
+		navigation[axis] = parseInt(decodeMessage(broadcast(axis)), 16);
+	}
+}
+
 loadModule(findModuleIndex('life-support'));
 loadModule(findModuleIndex('propulsion'));
 loadModule(findModuleIndex('navigation'));
@@ -126,3 +132,4 @@ resetLARRY();
 loadModule(findModuleIndex('communication'));
 setMessage();
 configureBroadcast();
+returnToEarth();

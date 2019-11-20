@@ -1,11 +1,11 @@
 const PI = 3.14159
 
 function sphereVolume(radius) {
-	return PI * Math.pow(radius, 3) * 4 / 3
+	return PI * radius ** 3 * 4 / 3
 }
 
 function coneVolume(radius, height) {
-	return PI * Math.pow(radius, 2) * height / 3
+	return PI * radius ** 2 * height / 3
 }
 
 function prismVolume(height, width, depth) {
